@@ -20,7 +20,7 @@ router.post("/signup",(req,res,next)=>{
   const password= req.body.password;
   
   if(username===""||password===""){
-    res.render("/views/auth/signup.hbs",{
+    res.render("../views/auth/signup.hbs",{
       errorMessage:"You have to fill in both password and username!"
   })
 

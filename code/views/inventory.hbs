@@ -1,6 +1,6 @@
 <h1>Welcome to your inventory</h1>
 <ul>
-{{#each user.foodItems}}
-{{>foodLine}}
+{{#each foodItems}}
+    {{> foodLine this.populatedFoodItems}}
 {{/each}}
 </ul>

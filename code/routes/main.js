@@ -18,17 +18,53 @@ router.get("/dash",(req,res,next)=>{
 
 router.get("/inventory",(req,res,next)=>{
   if(req.session.currentUser){
-User.findById(req.session.currentUser._id)
-.populate("foodItems")
-.then(user=>{
-  debugger
-  res.render("../views/inventory.hbs",{user})
-})
+    console.log(req.session.currentUser._id)
+  User.aggregate([
+    {
+      '$match': {
+        '_id': mongoose.Types.ObjectId(req.session.currentUser._id)
+      }
+    }, {
+      '$lookup': {
+        'from': 'fooditems', 
+        'localField': 'foodItems', 
+        'foreignField': '_id', 
+        'as': 'populatedFoodItems'
+      }
+    }, {
+      '$unwind': {
+        'path': '$populatedFoodItems'
+      }
+    }, {
+      '$project': {
+        'username': 1, 
+        'populatedFoodItems': {
+          'name': 1, 
+          'dateOfPurchase': {
+            '$dateToString': {
+              'format': '%d-%m-%Y', 
+              'date': '$populatedFoodItems.dateOfPurchase'
+            }
+          }, 
+          'expiryDate': {
+            '$dateToString': {
+              'format': '%d-%m-%Y', 
+              'date': '$populatedFoodItems.expiryDate'
+            }
+          }
+        }
+      }
+    }
+  ])
+  .then(foodItems=>{
+    console.log("FOOOOOD", foodItems)
+    res.render("../views/inventory.hbs",{foodItems})
+  })
 
-.catch(err=>{
-  console.log(err)
-})
-  }else{
+  .catch(err=>{
+    console.log(err)
+  })
+    }else{
     res.redirect("/")
   }
 })
