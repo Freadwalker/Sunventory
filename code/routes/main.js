@@ -8,7 +8,6 @@ const User=require("../models/user")
 
 router.get("/inventory",(req,res,next)=>{
   if(req.session.currentUser){
-    console.log(req.session.currentUser._id)
   User.aggregate([
     {
       '$match': {
@@ -48,7 +47,6 @@ router.get("/inventory",(req,res,next)=>{
     }
   ])
   .then(foodItems=>{
-    console.log("FOOOOOD", foodItems)
     res.render("../views/inventory.hbs",{foodItems})
   })
 
@@ -61,7 +59,51 @@ router.get("/inventory",(req,res,next)=>{
 })
 router.get("/create-item",(req,res,next)=>{
   if(req.session.currentUser){   
-    res.render("create-item")
+    User.aggregate([
+      {
+        '$match': {
+          '_id': mongoose.Types.ObjectId(req.session.currentUser._id)
+        }
+      }, {
+        '$lookup': {
+          'from': 'fooditems', 
+          'localField': 'foodItems', 
+          'foreignField': '_id', 
+          'as': 'populatedFoodItems'
+        }
+      }, {
+        '$unwind': {
+          'path': '$populatedFoodItems'
+        }
+      }, {
+        '$project': {
+          'username': 1, 
+          'populatedFoodItems': {
+            '_id':1,
+            'name': 1, 
+            'dateOfPurchase': {
+              '$dateToString': {
+                'format': '%d-%m-%Y', 
+                'date': '$populatedFoodItems.dateOfPurchase'
+              }
+            }, 
+            'expiryDate': {
+              '$dateToString': {
+                'format': '%d-%m-%Y', 
+                'date': '$populatedFoodItems.expiryDate'
+              }
+            }
+          }
+        }
+      }
+    ])
+    .then(foodItems=>{
+      res.render("../views/create-item.hbs",{foodItems})
+    })
+  
+    .catch(err=>{
+      console.log(err)
+    })
   }else{
     res.redirect("/login")
   }

@@ -1,7 +1,13 @@
 <h1>Add a product!</h1>
 
 <form action="/create-item" method="POST">
+<select>
+    {{#each foodItem}}
+    <option>{{name}}</option>
 
+
+    {{/each}}
+</select>
 <input type="text"class="input" name="productName" placeholder="productName">
 <input type="date" class="input" name="dateOfPurchase" placeholder="dateOfPurchase">
 <input type="date" class="input" name="expiryDate" placeholder="expiryDate">
