@@ -6,12 +6,12 @@
 <input type="text"class="input" name="productName" value="{{food.name}}"placeholder="productName">
 
 <span>Current Date:{{food.dateOfPurchase}}</span>
-<input type="date" class="input" name="dateOfPurchase" value="{{food.dateOfPurchase}}" placeholder="dateOfPurchase">
+<input type="date" class="input" name="dateOfPurchase" value="{{food.dateOfPurchase}}"placeholder="dateOfPurchase">
 
 <span>Current ExpiryDate:{{food.expiryDate}}</span>
 <input type="date" class="input" name="expiryDate" value="{{food.expiryDate}}" placeholder="expiryDate">
 
 
 <button type="submit" class="submitButton">Update Item</button>
-
+<p>{{errorMessage}}</p>
 </form>
