@@ -6,12 +6,13 @@
 <div class="anotherBox">
 
 <h2 class="itemName">{{name}}</h2>
-</div>
+
 
 <div class="itemBox">
 <h3 class="purchaseDate">{{dateOfPurchase}} {{expiryDate}} </h3>
-<a href="/updateItem/{{_id}}">
-<button class="updateButton"><img class="pencil" src="/images/pencil.png"></button></a>
-<a href="/deleteItem/{{_id}}"><button class="delete-button">DeleteItem</button></a>
 </div>
 </div>
+<a href="/updateItem/{{_id}}"><button class="updateButton"><img class="pencil" src="/images/pencilClean.png"></button></a>
+<a href="/deleteItem/{{_id}}"><button class="deleteButton"><img class="trashcan" src="/images/trashcan.png"></button></a>
+</div>
+

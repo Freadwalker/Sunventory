@@ -3,12 +3,16 @@ body {
   padding: 0px;
   margin: 0px;
   font: 14px Roboto, sans-serif;
+  background-color: #f4f6f97c;
 }
 
 .container{
   max-width: 900px;
   margin: auto;
   align-content: center;
+  // text-align: center;
+}
+.textCenter{
   text-align: center;
 }
 .infoBarBox{
@@ -309,30 +313,97 @@ cursor: pointer;
 }
 
 .itemList{
-//   width: 100%;
-// display: flex;
-// justify-content: center;
-background-color: #818181;
+  height: 150px;
+display: flex;
+
+margin-bottom: 25px;
+justify-content: center;
+background-color: white;
+align-items: center;
 }
 .itemBox{
    display: flex;
    align-items: center;
+   justify-content: space-between;
 }
 
 .anotherBox{
-  width: 100%
+  width: 60%
+}
+
+#welcomeHI{
+  margin-top: 2rem;
+  font-size: 1.7rem;
+  line-height: 3rem;
+  font-weight: bold;
 }
 
 
+
+.welcomeTextBox{
+  display: flex;
+  justify-content: center;
+  background-color: #e7f7fc;
+  height: 230px;
+}
+.welcomeText{
+  width: 80%;
+}
+
+#search{
+  height: 70px;
+  width: 100%;
+ border: 0px solid;
+ border-radius: 10px;
+background-color: white;
+padding-left: 20px;
+}
+
+#search:focus{
+  outline: none;
+}
 
 .updateButton{
   background-color: transparent;
   border: 0px solid;
+  width: 35px;
+  height: 35px;
+  background-color: #f99e4c;
+  border-radius: 50%;
   transform: rotate(30deg);
 }
-.updateButton img{
-  width: 10px;
+
+.updateButton:focus{
+  outline: none;
 }
+
+.updateButton img{
+  margin-top: 3.9px;
+  width: 7px;
+}
+.purchaseDate{
+  font-size: 1.1rem;
+  font-weight: 400;
+
+}
+
+.deleteButton{
+  background-color: transparent;
+  border: 0px solid;
+  width: 35px;
+  height: 35px;
+  background-color: #c72c41;
+  border-radius: 50%;
+padding-top: 5px;
+
+}
+.deleteButton img{
+  width: 13px;
+ 
+}
+
+
+
 .purchaseDate{
   word-spacing: 50px;
 }
