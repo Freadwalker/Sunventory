@@ -239,15 +239,30 @@ body {
     border: 0px solid;
     border-radius: 100%;
     background-color: #1dbc60;
-    position: absolute;
-    right: 50px;
-    bottom: 50px;
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
     box-shadow: 10px 10px 35px rgba(126, 126, 126, 0.5);
     vertical-align: middle; }
   #addItemMax {
     display: none; }
   #addPlusMax {
-    display: none; } }
+    display: none; }
+  .itemList {
+    background-color: #818181; }
+  .itemBox {
+    display: flex;
+    align-items: center; }
+  .anotherBox {
+    width: 100%; }
+  .updateButton {
+    background-color: transparent;
+    border: 0px solid;
+    transform: rotate(30deg); }
+  .updateButton img {
+    width: 10px; }
+  .purchaseDate {
+    word-spacing: 50px; } }
 
 /* ************** */
 @media (min-width: 801px) {

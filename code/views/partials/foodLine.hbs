@@ -1,7 +1,16 @@
 
-<p>
-Item: <span class="item-name">{{name}}</span> 
-Purchased: <span class="item-purchase date">{{dateOfPurchase}}</span>
-Expires: <span class="item-expiry date">{{expiryDate}}</span>
-<a href="/updateItem/{{_id}}"><button class="update-button">UpdateItem</button></a>
- </p>
+{{!-- Item: / Purchased: / Expires:  --}}
+
+<div class="itemList">
+
+<div class="anotherBox">
+
+<h2 class="itemName">{{name}}</h2>
+</div>
+
+<div class="itemBox">
+<h3 class="purchaseDate">{{dateOfPurchase}} {{expiryDate}} </h3>
+<a href="/updateItem/{{_id}}">
+<button class="updateButton"><img class="pencil" src="/images/pencil.png"></button></a>
+</div>
+</div>
