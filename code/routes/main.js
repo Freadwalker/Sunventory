@@ -39,6 +39,7 @@ router.get("/inventory",(req,res,next)=>{
       '$project': {
         'username': 1, 
         'populatedFoodItems': {
+          '_id':1,
           'name': 1, 
           'dateOfPurchase': {
             '$dateToString': {
