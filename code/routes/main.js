@@ -6,16 +6,6 @@ const moment= require("moment")
 const User=require("../models/user")
 
 
-router.get("/dash",(req,res,next)=>{
-  if(req.session.currentUser){
-  const user = req.session.currentUser;
-  res.render("../views/dash",{user});
-  }
-  else{
-    res.redirect("/login");
-  }
-})
-
 router.get("/inventory",(req,res,next)=>{
   if(req.session.currentUser){
     console.log(req.session.currentUser._id)
@@ -79,11 +69,11 @@ router.get("/create-item",(req,res,next)=>{
 
 router.post("/create-item",(req,res,next)=>{
     const name=req.body.productName;
-    const dateOfPurchase= moment(req.body.dateOfPurchase).format('DD-MM-YYYY')
-    const expiryDate= moment(req.body.expiryDate).format('DD-MM-YYYY')
+    const dateOfPurchase= moment(req.body.dateOfPurchase).format('MM-DD-YYYY')
+    const expiryDate= moment(req.body.expiryDate).format('MM-DD-YYYY')
     foodItem.create({name:name,dateOfPurchase:dateOfPurchase, expiryDate:expiryDate})
     .then((food)=>{
-      console.log(food)
+      console.log(food) 
       User.findByIdAndUpdate(req.session.currentUser._id,{$push:{foodItems:food._id}},{new:true})
       .then((updatedUser)=>{
         console.log(updatedUser)
@@ -97,9 +87,17 @@ router.post("/create-item",(req,res,next)=>{
 })
 
 router.get("/updateItem/:id",(req,res,next)=>{
+  if(!req.session.currentUser){
+    res.redirect("/login")
+  }
     foodItem.findById(req.params.id)    
     .then(food=>{
-      res.render("../views/update-item",{food})
+
+      var formattedFood = Object.assign({}, food)
+      formattedFood.name= food.name;
+      formattedFood.expiryDate = moment(food.expiryDate).format("YYYY-MM-DD")
+      formattedFood.dateOfPurchase = moment(food.dateOfPurchase).format("YYYY-MM-DD")
+      res.render("../views/update-item",{food: formattedFood})
     })
     .catch(err=>{
       console.log(err)
@@ -110,6 +108,10 @@ router.post("/updateItem/:id",(req,res,next)=>{
   const purchaseDate=req.body.dateOfPurchase;
   const expiryDate=req.body.expiryDate;
 
+  if(productName===""||purchaseDate===""||expiryDate===""){
+    return;
+  }
+  
   foodItem.findByIdAndUpdate(req.params.id,
     {name:productName,dateOfPurchase:purchaseDate,expiryDate:expiryDate})
     .then(()=>{
@@ -119,5 +121,16 @@ router.post("/updateItem/:id",(req,res,next)=>{
       console.log(err)
     })
 })
+
+router.get("/deleteItem/:id",(req,res,next)=>{
+  foodItem.findByIdAndDelete(req.params.id)
+  .then(()=>{
+    res.redirect("/inventory")
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+})
+
 
 module.exports=router;
