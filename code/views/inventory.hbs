@@ -1,10 +1,14 @@
-<h1>Hi {{user.username}}, 👋<br>
+<div class="welcomeTextBox">
+<div class="welcomeText">
+<h1 id="welcomeHI">Hi {{user.username}}, 👋<br>
 Welcome to your inventory</h1>
 
 
 <form>
-  <input type="text" name="search" method="GET" placeholder="Search">
+  <input id="search" type="text" name="search" method="GET" placeholder="Search">
 </form>
+</div>
+</div>
 
 
 
@@ -13,7 +17,7 @@ Welcome to your inventory</h1>
 {{/each}}
 
 
-
+<div class="textCenter">
 <a id="addItemMax" href="/create-item">
 <div id="addPlusMax">
 + add item
