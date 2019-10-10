@@ -7,8 +7,9 @@ Welcome to your inventory</h1>
 </form>
 
 
-{{#each user.foodItems}}
-{{>foodLine}}
+
+{{#each foodItems}}
+    {{> foodLine this.populatedFoodItems}}
 {{/each}}
 
 
