@@ -28,3 +28,70 @@ Welcome to your inventory</h1>
 +
 </div>
 </a> 
+
+
+<script>
+
+function transformDate(date){
+  const newDate=date.split(`-`)
+  let copy= [...newDate]
+  newDate[0]=copy[1]
+  newDate[1]=copy[0]
+  return newDate;
+}
+
+function calcDifference(date1,date2){
+  const calcDate1= new Date(date1);
+  const calcDate2= new Date(date2);
+
+  const diffTime = Math.abs(calcDate2-calcDate1);
+  const diffDays = Math.ceil(diffTime /(1000 * 60 * 60 * 24))
+  return diffDays;
+}
+
+function getTrafficLight(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();     
+    today = dd + '/' + mm + '/' + yyyy;
+
+
+    
+
+    let date1=null;
+    let date2=null;
+    let itemArray=document.getElementsByClassName("itemBox");
+    debugger
+
+    let daysDiffDates;
+    let daysDiffExpires;
+
+    for(let i= 0;i<itemArray.length;i++){
+
+      date1=itemArray[i].getElementsByClassName("dateOfPurchaseTest")[0].innerHTML
+      date2=itemArray[i].getElementsByClassName("expiryDateTest")[0].innerHTML
+
+      daysDiffDates=calcDifference(transformDate(date1),transformDate(date2));
+      daysDiffExpires=calcDifference(today,transformDate(date2))
+      debugger
+      if(daysDiffExpires>=daysDiffDates/100*50){
+        console.log("Green")
+        }else if(daysDiffExpires<(daysDiffDates/100*50)&&daysDiffExpires>(daysDiffDates/100*20)){
+            console.log("Yellow")
+        }else if(daysDiffExpires<(daysDiffDates/100*20)){
+            console.log("Red")
+        }else{
+          console.log("Is expired")
+        }
+    
+
+    }
+
+}
+
+  
+getTrafficLight();
+
+
+</script>
