@@ -1,6 +1,29 @@
-<h1>Welcome to your inventory</h1>
-<ul>
+<h1>Hi {{user.username}}, 👋<br>
+Welcome to your inventory</h1>
+
+
+<form>
+  <input type="text" name="search" method="GET" placeholder="Search">
+</form>
+
+
 {{#each user.foodItems}}
 {{>foodLine}}
 {{/each}}
-</ul>
+
+
+
+<a id="addItemMax" href="/create-item">
+<div id="addPlusMax">
++ add item
+</div>
+</a>
+
+
+
+
+<a id="addItemMin" href="/create-item">
+<div id="addPlusMin">
++
+</div>
+</a> 
