@@ -186,7 +186,7 @@ body {
     height: 50px; }
   #signup {
     margin-top: 20px;
-    width: 400px; }
+    width: 80%; }
   #signupText {
     font-size: 2rem;
     font-weight: 500; }
@@ -227,7 +227,27 @@ body {
     color: white;
     cursor: pointer;
     right: 0px;
-    border: 0px; } }
+    border: 0px; }
+  #addItemMin {
+    color: white;
+    font-size: 5rem;
+    line-height: 80px;
+    display: inline-block; }
+  #addPlusMin {
+    width: 80px;
+    height: 80px;
+    border: 0px solid;
+    border-radius: 100%;
+    background-color: #1dbc60;
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    box-shadow: 10px 10px 35px rgba(126, 126, 126, 0.5);
+    vertical-align: middle; }
+  #addItemMax {
+    display: none; }
+  #addPlusMax {
+    display: none; } }
 
 /* ************** */
 @media (min-width: 801px) {
@@ -322,7 +342,7 @@ body {
     max-width: 95%;
     line-height: 3rem; }
   #cook {
-    width: 80%; }
+    width: 70%; }
   #titleBackground {
     display: flex;
     justify-content: center; }
@@ -335,6 +355,26 @@ body {
     width: 50%; }
   #mainText {
     font-weight: 300;
-    font-size: 2rem; } }
+    font-size: 2rem; }
+  #addPlusMax {
+    width: 200px;
+    height: 80px;
+    border: 0px solid;
+    border-radius: 50px;
+    background-color: #1dbc60;
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    box-shadow: 10px 10px 35px rgba(126, 126, 126, 0.5);
+    vertical-align: middle; }
+  #addItemMax {
+    color: white;
+    font-size: 2rem;
+    line-height: 75px;
+    display: inline-block; }
+  #addItemMin {
+    display: none; }
+  #addPlusMin {
+    display: none; } }
 
 /*# sourceMappingURL=style.css.map */
