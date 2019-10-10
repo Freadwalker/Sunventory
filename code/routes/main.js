@@ -47,7 +47,7 @@ router.get("/inventory",(req,res,next)=>{
     }
   ])
   .then(foodItems=>{
-    res.render("../views/inventory.hbs",{foodItems})
+    res.render("../views/inventory.hbs",{foodItems:foodItems,user:req.session.currentUser})
   })
 
   .catch(err=>{
