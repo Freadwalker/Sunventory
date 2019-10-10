@@ -10,7 +10,7 @@ router.get("/signup",(req,res,next)=>{
   if(!req.session.currentUser){
   res.render("../views/auth/signup.hbs")
   }else{
-    res.redirect("/dash")
+    res.redirect("/inventory")
   }
 })
 
@@ -52,7 +52,7 @@ router.get("/login",(req,res,next)=>{
   if(!req.session.currentUser){
   res.render("../views/auth/login.hbs")
   }else{
-    res.redirect("/dash")
+    res.redirect("/inventory")
   }
 })
 
@@ -73,7 +73,7 @@ router.post("/login",(req,res,next)=>{
 
         if(bcrypt.compareSync(password,user.password)){
           req.session.currentUser=user;
-          res.redirect("/dash")
+          res.redirect("/inventory")
         }else{
           res.render("../views/auth/login.hbs",{errorMessage:"Wrong username or password"});
           return;
