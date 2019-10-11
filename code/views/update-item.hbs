@@ -1,17 +1,20 @@
-<h1>Update item</h1>
+<h1 id="welcomeHI">Update item</h1>
 
 <form action="/updateItem/{{food.id}}" method="POST">
 
 <span>Name of Item</span>
-<input type="text"class="input" name="productName" value="{{food.name}}"placeholder="productName">
+<input type="text"class="input" name="productName" value="{{food.name}}"placeholder="Product Name">
 
-<span>Current Date:{{food.dateOfPurchase}}</span>
-<input type="date" class="input" name="dateOfPurchase" value="{{food.dateOfPurchase}}"placeholder="dateOfPurchase">
+<span>Current Date: {{food.dateOfPurchase}}</span>
+<input type="date" class="input" name="dateOfPurchase" value="{{food.dateOfPurchase}}"placeholder="Date of purchase">
 
-<span>Current ExpiryDate:{{food.expiryDate}}</span>
-<input type="date" class="input" name="expiryDate" value="{{food.expiryDate}}" placeholder="expiryDate">
+<span>Current Expiration date: {{food.expiryDate}}</span>
+<input type="date" class="input" name="expiryDate" value="{{food.expiryDate}}" placeholder="Expiration date">
 
 
-<button type="submit" class="submitButton">Update Item</button>
+<button id="buttonBlack" type="submit" class="submitButton">Update Item</button>
 <p>{{errorMessage}}</p>
 </form>
+
+
+
