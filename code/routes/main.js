@@ -58,6 +58,7 @@ router.get("/inventory",(req,res,next)=>{
   }
 })
 router.get("/create-item",(req,res,next)=>{
+  const defaultFoods=["Kiwi","Apple","Banana","Jackfruit","Tomato","Orange","Milk","Flour"]
   if(req.session.currentUser){   
     User.aggregate([
       {
@@ -98,7 +99,7 @@ router.get("/create-item",(req,res,next)=>{
       }
     ])
     .then(foodItems=>{
-      res.render("../views/create-item.hbs",{foodItems})
+      res.render("../views/create-item.hbs",{foodItems:foodItems,defaultFoods:defaultFoods})
     })
   
     .catch(err=>{
@@ -110,9 +111,42 @@ router.get("/create-item",(req,res,next)=>{
 })
 
 router.post("/create-item",(req,res,next)=>{
-    const name=req.body.productName;
-    const dateOfPurchase= moment(req.body.dateOfPurchase).format('MM-DD-YYYY')
-    const expiryDate= moment(req.body.expiryDate).format('MM-DD-YYYY')
+    let defaultFoods=["Kiwi","Apple","Banana","Jackfruit","Tomato","Orange","Milk","Flour"]
+    let name;
+    let nameSelect=req.body.productName2;
+    let nameInput=req.body.productName;
+
+    if(nameSelect===""||nameSelect==="Choose a product"&&nameInput===""){
+      res.render("../views/create-item.hbs",{errorMessage:"You have to choose a name! ",defaultFoods:defaultFoods})
+      return;
+    }else if(nameSelect==="Choose a product"||nameSelect===""){
+      name=nameInput;
+    }else if(nameInput===""){
+      name=nameSelect;
+    }else {
+      res.render("../views/create-item.hbs",{errorMessage:"You can only choose one of the two name options!",defaultFoods:defaultFoods})
+      return;
+    }
+
+    
+    
+    // const dateOfPurchase= moment(req.body.dateOfPurchase).format('MM-DD-YYYY')
+    // const expiryDate= moment(req.body.expiryDate).format('MM-DD-YYYY')
+    const dateOfPurchase=req.body.dateOfPurchase;
+    const expiryDate=req.body.expiryDate;
+    if(dateOfPurchase===""&&expiryDate===""){
+      res.render("../views/create-item.hbs",{errorMessage:"It seems like you havent enter any dates!",defaultFoods:defaultFoods})
+      return;
+    }else if(dateOfPurchase===""){
+      res.render("../views/create-item.hbs",{errorMessage:"You forgot to enter the purchaseDate!",defaultFoods:defaultFoods})
+      return;
+    }else if(expiryDate===""){
+      res.render("../views/create-item.hbs",{errorMessage:"You forgot to enter the expiryDate!",defaultFoods:defaultFoods})
+      return;
+    }
+    dateOfPurchase=moment(dateOfPurchase).format("MM-DD-YYYY");
+    expiryDate=moment(expiryDate).format("MM-DD-YYYY")
+    
     foodItem.create({name:name,dateOfPurchase:dateOfPurchase, expiryDate:expiryDate})
     .then((food)=>{
       console.log(food) 
@@ -155,8 +189,8 @@ router.post("/updateItem/:id",(req,res,next)=>{
     {name:productName,dateOfPurchase:purchaseDate,expiryDate:expiryDate})
     .then(()=>{
       res.redirect("/inventory");
-      
-    })
+        })
+
     .catch(err=>{
       console.log(err)
       

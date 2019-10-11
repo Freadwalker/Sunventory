@@ -1,13 +1,15 @@
 <h1>Add a product!</h1>
-
+<p>{{errorMessage}}</p>
 <form action="/create-item" method="POST">
-{{!-- <select>
-    {{#each foodItems}}
-    <option>{{foodItems.name}}</option>
-    {{/each}}
-</select> --}}
 
-<input type="text"class="input" name="productName" placeholder="productName">
+<select name="productName2" class="input">
+    <option>Choose a product</option>
+    {{#each defaultFoods}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+</select>
+
+<input type="text"class="input" name="productName" placeholder=".... or enter your own product">
 <input type="date" class="input" name="dateOfPurchase" placeholder="dateOfPurchase">
 <input type="date" class="input" name="expiryDate" placeholder="expiryDate">
 
