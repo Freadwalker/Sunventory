@@ -546,7 +546,7 @@ body {
     border: 0px solid;
     border-radius: 50px;
     background-color: #1dbc60;
-    position: absolute;
+    position: fixed;
     right: 50px;
     bottom: 50px;
     box-shadow: 10px 10px 35px rgba(126, 126, 126, 0.5);
