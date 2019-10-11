@@ -12,6 +12,15 @@ body {
   align-content: center;
   // text-align: center;
 }
+.centerBox{
+
+  display: flex;
+  justify-content: center;
+}
+.boxCenter{
+  text-align: center;
+  width: 80%;
+}
 .textCenter{
   text-align: center;
 }
@@ -158,7 +167,6 @@ cursor: pointer;
   justify-content: center;
   align-items: center;
   position: absolute;
-  z-index: 99;
   border: none;
   background: #1dbc60;
   background-size: 18px;
@@ -190,11 +198,10 @@ cursor: pointer;
   justify-content: center;
   align-items: center;
   position: absolute;
-  z-index: 99;
   border: none;
   background: #f99e4c;
   background-size: 18px;
-  cursor: pointer;
+
   outline: none;
 }
 
@@ -221,11 +228,10 @@ cursor: pointer;
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 99;
   border: none;
   background: #c72c41;
   background-size: 18px;
-  cursor: pointer;
+
   outline: none;
 }
 
@@ -259,11 +265,10 @@ cursor: pointer;
   justify-content: center;
   align-items: center;
   position: absolute;
-  z-index: 99;
   border: none;
   background: #c72c41;
   background-size: 18px;
-  cursor: pointer;
+
   outline: none;
 }
 

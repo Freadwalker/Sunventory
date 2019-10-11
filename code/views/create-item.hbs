@@ -1,5 +1,17 @@
+<div class="centerBox">
+    <div class="boxCenter">
 <h1>Add a product!</h1>
-<p>{{errorMessage}}</p>
+{{!-- <p>{{errorMessage}}</p> --}}
+{{#if errorMessage}}
+<div class="errorBox">
+<div class="errorText">
+<p class="errrorMessage">{{errorMessage}}</p>
+</div>
+</div>
+
+{{/if}}
+
+
 <form action="/create-item" method="POST">
 
 <select name="productName2" class="input">
@@ -16,3 +28,24 @@
 <button id="buttonBlack" type="submit" class="submitButton">Create Item</button>
 
 </form>
+
+
+{{#if errorMessage}}
+<script>
+
+  let button = document.getElementById('buttonBlack');
+  button.id = "redError";
+
+setTimeout(function(){ 
+  button.id = "buttonBlack"
+   }, 700)
+</script>
+{{/if}}
+</div>
+</div>
+
+
+
+
+
+
