@@ -63,10 +63,9 @@ function getTrafficLight(){
 
     
 
-    let date1=null;
-    let date2=null;
+    let date1;
+    let date2;
     let itemArray=document.getElementsByClassName("itemBox");
-    debugger
 
     let daysDiffDates;
     let daysDiffExpires;
@@ -78,7 +77,7 @@ function getTrafficLight(){
 
       daysDiffDates=calcDifference(transformDate(date1),transformDate(date2));
       daysDiffExpires=calcDifference(today,transformDate(date2))
-      debugger
+     
       if(daysDiffExpires>=daysDiffDates/100*50){
         console.log("Green")
         }else if(daysDiffExpires<(daysDiffDates/100*50)&&daysDiffExpires>(daysDiffDates/100*20)){

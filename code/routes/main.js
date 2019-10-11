@@ -136,6 +136,7 @@ router.get("/updateItem/:id",(req,res,next)=>{
     .then(food=>{
 
       var formattedFood = Object.assign({}, food)
+      formattedFood._id=food._id;
       formattedFood.name= food.name;
       formattedFood.expiryDate = moment(food.expiryDate).format("YYYY-MM-DD")
       formattedFood.dateOfPurchase = moment(food.dateOfPurchase).format("YYYY-MM-DD")
@@ -149,19 +150,18 @@ router.post("/updateItem/:id",(req,res,next)=>{
   const productName=req.body.productName;
   const purchaseDate=req.body.dateOfPurchase;
   const expiryDate=req.body.expiryDate;
-
-  if(productName===""||purchaseDate===""||expiryDate===""){
-    return;
-  }
   
   foodItem.findByIdAndUpdate(req.params.id,
     {name:productName,dateOfPurchase:purchaseDate,expiryDate:expiryDate})
     .then(()=>{
       res.redirect("/inventory");
+      
     })
     .catch(err=>{
       console.log(err)
+      
     })
+    
 })
 
 router.get("/deleteItem/:id",(req,res,next)=>{
