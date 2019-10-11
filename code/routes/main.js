@@ -58,7 +58,7 @@ router.get("/inventory",(req,res,next)=>{
   }
 })
 router.get("/create-item",(req,res,next)=>{
-  const defaultFoods=["Kiwi","Apple","Banana","Jackfruit","Tomato","Orange","Milk","Flour"]
+  const defaultFoods=["Kiwi","Apple","Banana","Jackfruit","Tomato","Orange","Milk","Flour","Ananas","Cheese","Beef","Ham","Steak","Chicken","Onion","Blueberry",""]
   if(req.session.currentUser){   
     User.aggregate([
       {
@@ -111,7 +111,7 @@ router.get("/create-item",(req,res,next)=>{
 })
 
 router.post("/create-item",(req,res,next)=>{
-    let defaultFoods=["Kiwi","Apple","Banana","Jackfruit","Tomato","Orange","Milk","Flour"]
+    let defaultFoods=["Kiwi","Apple","Banana","Jackfruit","Tomato","Orange","Milk","Flour","Ananas","Cheese","Beef","Ham","Steak","Chicken","Onion","Blueberry",""]
     let name;
     let nameSelect=req.body.productName2;
     let nameInput=req.body.productName;
@@ -132,8 +132,8 @@ router.post("/create-item",(req,res,next)=>{
     
     // const dateOfPurchase= moment(req.body.dateOfPurchase).format('MM-DD-YYYY')
     // const expiryDate= moment(req.body.expiryDate).format('MM-DD-YYYY')
-    const dateOfPurchase=req.body.dateOfPurchase;
-    const expiryDate=req.body.expiryDate;
+    let dateOfPurchase=req.body.dateOfPurchase;
+    let expiryDate=req.body.expiryDate;
     if(dateOfPurchase===""&&expiryDate===""){
       res.render("../views/create-item.hbs",{errorMessage:"It seems like you havent enter any dates!",defaultFoods:defaultFoods})
       return;
@@ -146,7 +146,7 @@ router.post("/create-item",(req,res,next)=>{
     }
     dateOfPurchase=moment(dateOfPurchase).format("MM-DD-YYYY");
     expiryDate=moment(expiryDate).format("MM-DD-YYYY")
-    
+
     foodItem.create({name:name,dateOfPurchase:dateOfPurchase, expiryDate:expiryDate})
     .then((food)=>{
       console.log(food) 
@@ -181,9 +181,9 @@ router.get("/updateItem/:id",(req,res,next)=>{
     })
 })
 router.post("/updateItem/:id",(req,res,next)=>{
-  const productName=req.body.productName;
-  const purchaseDate=req.body.dateOfPurchase;
-  const expiryDate=req.body.expiryDate;
+  let productName=req.body.productName;
+  let purchaseDate=req.body.dateOfPurchase;
+  let expiryDate=req.body.expiryDate;
   
   foodItem.findByIdAndUpdate(req.params.id,
     {name:productName,dateOfPurchase:purchaseDate,expiryDate:expiryDate})

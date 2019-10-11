@@ -5,18 +5,18 @@
 
 {{!-- Item: / Purchased: / Expires:  --}}
  
-       {{!-- <div class="greenButtonBox">
+       <div class="greenButtonBox">
         <div class="greenButton"></div>
       </div>
       
        <div class="yellowButtonBox">
         <div class="yellowButton"></div>
-      </div> --}}
+      </div> 
 
 
-       {{!-- <div class="redButtonBox">
+        <div class="redButtonBox">
         <div class="redButton"></div>
-      </div> --}}
+      </div>
       
 
       <div class="expiredButtonBox">
@@ -36,8 +36,8 @@
 
 
     <div class="itemBox">
-      <h3 class="purchaseDate"><span class="dateOfPurchaseTest">{{dateOfPurchase}}</span> 
-      <span class="expiryDateTest">{{expiryDate}}</span> </h3>
+      <h3 class="purchaseDate">purchased: <span class="dateOfPurchaseTest">{{dateOfPurchase}}</span> 
+      expires:<span class="expiryDateTest">{{expiryDate}}</span> </h3>
       <a href="/updateItem/{{_id}}">  
 
 

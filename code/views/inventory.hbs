@@ -45,11 +45,13 @@ function transformDate(date){
 }
 
 function calcDifference(date1,date2){
+
   const calcDate1= new Date(date1);
   const calcDate2= new Date(date2);
 
-  const diffTime = Math.abs(calcDate2-calcDate1);
+  const diffTime = calcDate2-calcDate1
   const diffDays = Math.ceil(diffTime /(1000 * 60 * 60 * 24))
+  if(date1<date2)
   return diffDays;
 }
 
@@ -58,14 +60,14 @@ function getTrafficLight(){
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();     
-    today = dd + '/' + mm + '/' + yyyy;
+    today = mm + '/' + dd + '/' + yyyy;
 
 
     
 
     let date1;
     let date2;
-    let itemArray=document.getElementsByClassName("itemBox");
+    let itemArray=document.getElementsByClassName("itemList");
    
 
     let daysDiffDates;
@@ -77,17 +79,16 @@ function getTrafficLight(){
       date2=itemArray[i].getElementsByClassName("expiryDateTest")[0].innerHTML
 
       daysDiffDates=calcDifference(transformDate(date1),transformDate(date2));
-      daysDiffExpires=calcDifference(today,transformDate(date2))
-  
-     
-      if(daysDiffExpires>=daysDiffDates/100*50){
-        console.log("Green")
-        }else if(daysDiffExpires<(daysDiffDates/100*50)&&daysDiffExpires>(daysDiffDates/100*20)){
-            console.log("Yellow")
+      daysDiffExpires=calcDifference(transformDate(today),transformDate(date2))
+      debugger
+        if(daysDiffExpires<=0){
+          itemArray[i].getElementsByClassName("expiredButtonBox")[0].style.display="flex"
+        }else if(daysDiffExpires > daysDiffDates/2){
+        itemArray[i].getElementsByClassName("greenButtonBox")[0].style.display="block"
+        }else if(daysDiffExpires<(daysDiffDates/100*50)&&daysDiffExpires>daysDiffDates/100*20){
+            itemArray[i].getElementsByClassName("yellowButtonBox")[0].style.display="block"
         }else if(daysDiffExpires<(daysDiffDates/100*20)){
-            console.log("Red")
-        }else{
-          console.log("Is expired")
+            itemArray[i].getElementsByClassName("redButtonBox")[0].style.display="block"
         }
     
 
