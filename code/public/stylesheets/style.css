@@ -130,7 +130,8 @@ body {
   margin-right: 25px;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  display: none; }
 
 .greenButton {
   display: flex;
@@ -154,7 +155,8 @@ body {
   margin-right: 25px;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  display: none; }
 
 .yellowButton {
   display: flex;
@@ -176,7 +178,8 @@ body {
   margin-right: 25px;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  display: none; }
 
 .redButton {
   display: flex;
@@ -199,7 +202,8 @@ body {
   margin-right: 25px;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  display: none; }
 
 .bg {
   animation: pulse 1.2s ease infinite;
