@@ -1,11 +1,11 @@
 <div class="welcomeTextBox">
 <div class="welcomeText">
-<h1 id="welcomeHI">Hi {{user.username}}, 👋<br>
+<h1 id="welcomeHI">Hi {{user.username}} 👋.<br>
 Welcome to your inventory</h1>
 
 
 <form>
-  <input id="search" type="text" name="search" method="GET" placeholder="Search">
+  <input id="search" type="text" name="search" onkeyup="myFunction()" placeholder="Search">
 </form>
 </div>
 </div>
@@ -66,6 +66,7 @@ function getTrafficLight(){
     let date1;
     let date2;
     let itemArray=document.getElementsByClassName("itemBox");
+   
 
     let daysDiffDates;
     let daysDiffExpires;
@@ -77,6 +78,7 @@ function getTrafficLight(){
 
       daysDiffDates=calcDifference(transformDate(date1),transformDate(date2));
       daysDiffExpires=calcDifference(today,transformDate(date2))
+  
      
       if(daysDiffExpires>=daysDiffDates/100*50){
         console.log("Green")

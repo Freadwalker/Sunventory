@@ -111,6 +111,119 @@ body {
   color: white;
   width: 70%; }
 
+.greenButton {
+  margin-right: 25px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%; }
+
+.greenButtonBox {
+  margin-right: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.greenButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 99;
+  border: none;
+  background: #1dbc60;
+  background-size: 18px;
+  cursor: pointer;
+  outline: none; }
+
+.yellowButton {
+  margin-right: 25px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%; }
+
+.yellowButtonBox {
+  margin-right: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.yellowButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 99;
+  border: none;
+  background: #f99e4c;
+  background-size: 18px;
+  cursor: pointer;
+  outline: none; }
+
+.redButton {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%; }
+
+.redButtonBox {
+  margin-right: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.redButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 99;
+  border: none;
+  background: #c72c41;
+  background-size: 18px;
+  cursor: pointer;
+  outline: none; }
+
+.bg,
+.expiredButton {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%; }
+
+.expiredButtonBox {
+  margin-right: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.bg {
+  animation: pulse 1.2s ease infinite;
+  background: #c72c41; }
+
+.expiredButton {
+  margin-right: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 99;
+  border: none;
+  background: #c72c41;
+  background-size: 18px;
+  cursor: pointer;
+  outline: none; }
+
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1); }
+  50% {
+    opacity: 0.3; }
+  100% {
+    transform: scale(1.5);
+    opacity: 0; } }
+
 @keyframes shake {
   0% {
     transform: translateX(0px); }
@@ -308,7 +421,8 @@ body {
     height: 35px;
     background-color: #c72c41;
     border-radius: 50%;
-    padding-top: 5px; }
+    padding-top: 5px;
+    margin-left: 10px; }
   .deleteButton img {
     width: 13px; }
   .purchaseDate {
@@ -440,6 +554,69 @@ body {
   #addItemMin {
     display: none; }
   #addPlusMin {
-    display: none; } }
+    display: none; }
+  .itemList {
+    height: 150px;
+    display: flex;
+    margin-bottom: 25px;
+    justify-content: center;
+    background-color: white;
+    align-items: center; }
+  .itemBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .anotherBox {
+    width: 60%; }
+  #welcomeHI {
+    margin-top: 2rem;
+    font-size: 1.7rem;
+    line-height: 3rem;
+    font-weight: bold; }
+  .welcomeTextBox {
+    display: flex;
+    justify-content: center;
+    background-color: #e7f7fc;
+    height: 230px; }
+  .welcomeText {
+    width: 80%; }
+  #search {
+    height: 70px;
+    width: 100%;
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: white;
+    padding-left: 20px; }
+  #search:focus {
+    outline: none; }
+  .updateButton {
+    background-color: transparent;
+    border: 0px solid;
+    width: 35px;
+    height: 35px;
+    background-color: #f99e4c;
+    border-radius: 50%;
+    transform: rotate(30deg); }
+  .updateButton:focus {
+    outline: none; }
+  .updateButton img {
+    margin-top: 3.9px;
+    width: 7px; }
+  .purchaseDate {
+    font-size: 1.1rem;
+    font-weight: 400; }
+  .deleteButton {
+    background-color: transparent;
+    border: 0px solid;
+    width: 35px;
+    height: 35px;
+    background-color: #c72c41;
+    border-radius: 50%;
+    padding-top: 5px;
+    margin-left: 10px; }
+  .deleteButton img {
+    width: 13px; }
+  .dateOfPurchaseTest {
+    margin-right: 50px; } }
 
 /*# sourceMappingURL=style.css.map */

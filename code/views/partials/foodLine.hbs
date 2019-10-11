@@ -1,24 +1,49 @@
 
-{{!-- Item: / Purchased: / Expires:  --}}
+
 
 <div class="itemList">
 
-<div class="anotherBox">
+{{!-- Item: / Purchased: / Expires:  --}}
+ 
+       {{!-- <div class="greenButtonBox">
+        <div class="greenButton"></div>
+      </div>
+      
+       <div class="yellowButtonBox">
+        <div class="yellowButton"></div>
+      </div> --}}
 
-<h2 class="itemName">{{name}}</h2>
+
+       {{!-- <div class="redButtonBox">
+        <div class="redButton"></div>
+      </div> --}}
+      
+
+      <div class="expiredButtonBox">
+         <div class="bg"></div>
+        <div class="expiredButton"></div>
+      </div>
 
 
-<div class="itemBox">
-<h3 class="purchaseDate"><span class="dateOfPurchaseTest">{{dateOfPurchase}}</span> <span class="expiryDateTest">{{expiryDate}}</span> </h3>
-<a href="/updateItem/{{_id}}">  
+  <div class="anotherBox">
 
-<img class="green">
-<img class="yellow">
-<img class="red">
-<img class="expired">
-</div>
-</div>
-<a href="/updateItem/{{_id}}"><button class="updateButton"><img class="pencil" src="/images/pencilClean.png"></button></a>
-<a href="/deleteItem/{{_id}}"><button class="deleteButton"><img class="trashcan" src="/images/trashcan.png"></button></a>
+    <h2 class="itemName">{{name}}</h2>
+
+
+     
+
+
+
+
+    <div class="itemBox">
+      <h3 class="purchaseDate"><span class="dateOfPurchaseTest">{{dateOfPurchase}}</span> 
+      <span class="expiryDateTest">{{expiryDate}}</span> </h3>
+      <a href="/updateItem/{{_id}}">  
+
+
+    </div>
+  </div>
+  <a href="/updateItem/{{_id}}"><button class="updateButton"><img class="pencil" src="/images/pencilClean.png"></button></a>
+  <a href="/deleteItem/{{_id}}"><button class="deleteButton"><img class="trashcan" src="/images/trashcan.png"></button></a>
 </div>
 
